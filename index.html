@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fuzia – On-Demand Beauty Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      color: #333;
+    }
+
+    header {
+      background: #1f1f1f;
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1f1f1f;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .dual-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .dual-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    }
+
+    .cta-btn {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: #357ABD;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, select, textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (min-width: 768px) {
+      .dual-section {
+        flex-direction: row;
+      }
+
+      .dual-box {
+        width: 48%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Fuzia</h1>
+    <p class="subtitle">Where beauty meets convenience</p>
+  </header>
+
+  <section class="section">
+    <h2>About Fuzia</h2>
+    <p>Fuzia is your mobile glam solution — connecting clients with beauty professionals for at-home hair, nail, and makeup services. Whether you're preparing for an event or just want a fresh look, Fuzia brings the salon to you.</p>
+  </section>
+
+  <section class="section dual-section">
+
+    <!-- Client Section -->
+    <div class="dual-box">
+      <h2>Book as a Client</h2>
+      <p>Tell us what you need, where you are, and we'll connect you with available beauty pros near you.</p>
+      <form action="https://formsubmit.co/masheletrinity7@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="text" name="location" placeholder="Your Location" required>
+        <select name="service" required>
+          <option value="">Choose a Service</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Hair">Hair</option>
+          <option value="Nails">Nails</option>
+        </select>
+        <input type="date" name="date" required>
+        <textarea name="notes" placeholder="Anything else? (Optional)"></textarea>
+        <button class="cta-btn" type="submit">Book Now</button>
+      </form>
+    </div>
+
+    <!-- Worker Section -->
+    <div class="dual-box">
+      <h2>Join as a Beauty Pro</h2>
+      <p>Want to work flexible hours and earn more? Apply to offer your services through Fuzia and get bookings on the go.</p>
+      <form action="https://formsubmit.co/masheletrinity7@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Beauty Professional Application">
+        <input type="text" name="worker_name" placeholder="Your Full Name" required>
+        <input type="email" name="worker_email" placeholder="Email Address" required>
+        <input type="tel" name="worker_phone" placeholder="Phone Number" required>
+        <select name="worker_service" required>
+          <option value="">What service do you offer?</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Hair">Hair</option>
+          <option value="Nails">Nails</option>
+          <option value="Multiple">Multiple</option>
+        </select>
+        <textarea name="worker_bio" placeholder="Tell us about your experience" required></textarea>
+        <button class="cta-btn" type="submit">Apply to Work</button>
+      </form>
+    </div>
+
+  </section>
+
+  <footer>
+    &copy; 2025 Fuzia. Designed for the future of beauty.
+  </footer>
+
+</body>
+</html>
