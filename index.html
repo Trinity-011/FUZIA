@@ -35,6 +35,9 @@
       box-shadow: 0 4px 15px rgba(255,111,145,0.3);
       margin-bottom: 3rem;
       border: 2px solid #FF6F91;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
     }
     section {
       margin-bottom: 3rem;
@@ -79,7 +82,7 @@
       background: #B693FF;
       box-shadow: 0 0 25px #B693FFcc;
     }
-    #thankYouMessage {
+    #thankYouMessage, #workerThankYou {
       display: none;
       margin-top: 20px;
       color: #B693FF;
@@ -87,6 +90,8 @@
       font-size: 1.3rem;
       text-align: center;
       text-shadow: 0 0 8px #B693FFbb;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
     }
     .flex-row {
       display: flex;
@@ -105,6 +110,9 @@
       margin-bottom: 1rem;
       color: #B693FF;
       text-shadow: 0 0 6px #B693FFbb;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     label {
       margin-bottom: 0.25rem;
@@ -119,6 +127,36 @@
       text-align: center;
       text-shadow: 0 0 4px #B693FFaa;
     }
+    /* Icons style */
+    svg.icon {
+      width: 24px;
+      height: 24px;
+      fill: #B693FF;
+      flex-shrink: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .container {
+        padding: 1.5rem;
+      }
+      button.cta-btn {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -127,9 +165,15 @@
     Book your appointment easily. Whether you are a client or a worker, we got you covered.
   </p>
 
-  <div class="container">
+  <div class="container" style="animation-delay: 0s;">
     <section id="client-section">
-      <h2>Client Booking</h2>
+      <h2>
+        <!-- Client Icon -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        Client Booking
+      </h2>
       <form id="bookingForm" name="booking" method="POST" data-netlify="true">
         <label for="clientName">Full Name</label>
         <input type="text" id="clientName" name="name" placeholder="Your full name" required />
@@ -160,10 +204,16 @@
     </section>
   </div>
 
-  <div class="container">
+  <div class="container" style="animation-delay: 0.2s;">
     <section id="worker-section">
-      <h2>Worker Registration</h2>
-      <form name="worker-registration" method="POST" data-netlify="true">
+      <h2>
+        <!-- Worker Icon -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+        Worker Registration
+      </h2>
+      <form id="workerForm" name="worker-registration" method="POST" data-netlify="true">
         <label for="workerName">Full Name</label>
         <input type="text" id="workerName" name="workerName" placeholder="Your full name" required />
 
@@ -184,15 +234,21 @@
 
         <button class="cta-btn" type="submit">Register</button>
       </form>
+      <div id="workerThankYou">
+        Thank you for registering! We will contact you soon.
+      </div>
     </section>
   </div>
 
   <script>
     const bookingForm = document.getElementById('bookingForm');
     const thankYouMessage = document.getElementById('thankYouMessage');
+    const workerForm = document.getElementById('workerForm');
+    const workerThankYou = document.getElementById('workerThankYou');
 
+    // Booking form submit handler
     bookingForm.addEventListener('submit', function(event) {
-      event.preventDefault();  // Prevent normal submit
+      event.preventDefault();
 
       const formData = new FormData(bookingForm);
 
@@ -202,8 +258,26 @@
         body: new URLSearchParams(formData).toString()
       })
       .then(() => {
-        bookingForm.style.display = 'none'; // Hide form
-        thankYouMessage.style.display = 'block'; // Show thank you
+        bookingForm.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+      })
+      .catch(() => alert('Oops! Something went wrong. Please try again.'));
+    });
+
+    // Worker form submit handler
+    workerForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(workerForm);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        workerForm.style.display = 'none';
+        workerThankYou.style.display = 'block';
       })
       .catch(() => alert('Oops! Something went wrong. Please try again.'));
     });
