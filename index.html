@@ -1,412 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fuzia – Glam On The Go</title>
+  <title>Fuzia – Mobile Beauty Services</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Fuzia – Mobile Beauty Services at Your Doorstep. Book hair, nails, and makeup services easily in your area." />
+  <meta name="keywords"
+    content="Fuzia, beauty, mobile salon, booking, makeup, hair, nails, Sandton, Alexandra, Johannesburg" />
+  <meta name="author" content="Fuzia" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-11525953833"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-11525953833');
+  </script>
+
   <style>
+    /* Reset and base */
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fff0f5;
+      margin: 0;
+      background: #fff0f6;
       color: #333;
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
-    header {
-      background: black;
-      color: white;
-      padding: 20px 10px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      color: #ff69b4;
-      font-family: 'Arial Black', Gadget, sans-serif;
-      letter-spacing: 3px;
-      margin-bottom: 8px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      font-weight: 600;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #ff69b4;
-    }
-    section {
-      padding: 60px 15px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      color: #ff69b4;
-      margin-bottom: 30px;
-      font-weight: 700;
-      font-size: 2.2rem;
-    }
-    #hero {
-      background: linear-gradient(135deg, #ff69b4, #000);
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-      font-family: 'Segoe UI Black', Arial Black, sans-serif;
-    }
-    #hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-    #hero p {
-      font-size: 1.3rem;
-      max-width: 650px;
-      margin: auto;
-    }
-    .service-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
-    }
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    }
-    .card h3 {
-      margin-bottom: 12px;
+
+    a {
       color: #ff1493;
-      font-size: 1.4rem;
-      font-weight: 700;
+      text-decoration: none;
     }
-    .card p {
-      font-size: 1rem;
-      color: #444;
+
+    a:hover {
+      text-decoration: underline;
     }
-    form {
-      background: white;
-      padding: 32px 28px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      max-width: 600px;
+
+    /* Container */
+    .container {
+      max-width: 960px;
       margin: 0 auto;
-      font-size: 1rem;
+      padding: 1rem 1.5rem 3rem;
     }
-    input, textarea {
-      width: 100%;
-      padding: 14px 12px;
-      margin-top: 14px;
-      border: 1.8px solid #ccc;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: border-color 0.3s ease;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #ff69b4;
-      box-shadow: 0 0 6px #ff69b4aa;
-    }
-    button {
+
+    /* Header & Logo */
+    header {
       background: #ff69b4;
       color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-      margin-top: 20px;
-      padding: 18px 0;      
-      font-size: 1.25rem;   
-      border-radius: 14px;
-      box-shadow: 0 8px 14px rgba(255, 105, 180, 0.7);
-      transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-    }
-    button:hover {
-      background: #e0559f;
-      box-shadow: 0 10px 20px rgba(224, 85, 158, 0.85);
-      transform: translateY(-4px);
-    }
-    button:active {
-      background: #c9448b;
-      box-shadow: 0 5px 8px rgba(201, 68, 139, 0.9);
-      transform: translateY(1.5px);
-    }
-    #thankYouMessage {
-      display: none;
-      margin-top: 18px;
-      color: green;
-      font-weight: 600;
       text-align: center;
-    }
-    #testimonials .testimonial-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
-    }
-    .testimonial {
-      background: white;
-      padding: 24px 28px;
-      border-radius: 14px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      font-style: italic;
-      color: #555;
+      padding: 2rem 1rem 1rem;
       position: relative;
     }
-    .testimonial::before {
-      content: "“";
-      font-size: 4rem;
-      color: #ff69b4;
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      font-family: serif;
-      opacity: 0.3;
+
+    header img.logo {
+      height: 60px;
+      margin-bottom: 0.5rem;
     }
-    .testimonial p {
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-    .testimonial .author {
+
+    header h1 {
+      margin: 0.25rem 0 0.5rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      font-style: normal;
+      letter-spacing: 0.05em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    header p.tagline {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-top: 0;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    /* About Us Section */
+    section.about {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.15);
+    }
+
+    section.about h2 {
       color: #ff1493;
-      text-align: right;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: center;
     }
-    #gallery {
-      max-width: 960px;
-      margin: 40px auto;
+
+    section.about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Services Section */
+    section.services {
+      background: #ffe6f0;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 10px rgba(255, 20, 147, 0.15);
+    }
+
+    section.services h2 {
+      color: #ff1493;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ul.services-list {
+      list-style: none;
+      padding: 0;
+      max-width: 700px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
-    #gallery img {
+
+    ul.services-list li {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(255, 105, 180, 0.2);
+      font-weight: 600;
+      color: #444;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    ul.services-list li:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(255, 20, 147, 0.3);
+    }
+
+    /* Booking Section */
+    section.booking {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.booking h2 {
+      color: #ff1493;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    form input,
+    form textarea,
+    form select {
       width: 100%;
-      border-radius: 14px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .calendar-note {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: -0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    button.book-btn {
+      background: #ff1493;
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      font-weight: 700;
+    }
+
+    button.book-btn:hover {
+      background: #e0137f;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25d366;
+      color: white !important;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(37, 211, 102, 0.5);
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #1ebe5d;
+    }
+
+    /* Testimonials Section */
+    section.testimonials {
+      background: #fff0f6;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(255, 20, 147, 0.2);
+    }
+
+    section.testimonials h2 {
+      text-align: center;
+      color: #ff1493;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      color: #555;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .testimonial strong {
+      display: block;
+      color: #ff1493;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Gallery Section */
+    section.gallery {
+      margin-top: 2rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.gallery h2 {
+      color: #ff1493;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .gallery-grid img {
+      width: 150px;
+      height: 150px;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-    #gallery img:hover {
+
+    .gallery-grid img:hover {
       transform: scale(1.05);
     }
+
+    /* Footer */
     footer {
-      background: black;
-      color: white;
       text-align: center;
-      padding: 24px 10px;
+      padding: 1rem;
+      background: #222;
+      color: white;
       font-size: 0.9rem;
+      margin-top: 3rem;
     }
+
     footer a {
       color: #ff69b4;
       text-decoration: none;
       font-weight: 600;
-      margin-left: 6px;
     }
-    /* WhatsApp Floating Button */
-    #whatsapp-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background-color: #25d366;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-    #whatsapp-btn:hover {
-      background-color: #1ebe5b;
-    }
-    #whatsapp-btn svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-    }
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      #hero h1 {
-        font-size: 2.4rem;
-      }
-      nav {
-        gap: 15px;
-        font-size: 0.9rem;
-      }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <!-- Logo Text -->
-    <h1>Fuzia</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#booking">Booking</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#gallery">Gallery</a>
-    </nav>
+    <!-- Replace with your logo image URL -->
+    <img src="https://i.imgur.com/HLvwHhx.png" alt="Fuzia Logo" class="logo" />
+    <h1>Fuzia – Mobile Beauty Services</h1>
+    <p class="tagline">Book your glow-up, wherever you are!</p>
   </header>
 
-  <section id="hero">
-    <h1>Glam On The Go</h1>
-    <p>Mobile beauty services for queens who know their worth.<br> Hair, nails & makeup – wherever you are.</p>
-  </section>
+  <main class="container">
+    <!-- About Us -->
+    <section class="about" id="about">
+      <h2>About Us</h2>
+      <p>
+        Fuzia is your go-to mobile beauty service bringing professional hair, nails, and makeup to your doorstep.
+        Convenient, affordable, and tailored for the modern woman on the go in Johannesburg and surrounding areas.
+      </p>
+    </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p style="max-width: 700px; margin: auto; text-align: center;">
-      Fuzia is a mobile beauty platform made for the modern woman. Whether you're at home, at the office, or prepping for a special event,
-      our expert glam team comes to you. Afro-futuristic vibes, feminine excellence, flawless beauty.
-    </p>
-  </section>
+    <!-- Services -->
+    <section class="services" id="services">
+      <h2>Our Services</h2>
+      <ul class="services-list">
+        <li>Hair Styling & Treatments</li>
+        <li>Nail Art & Manicures</li>
+        <li>Makeup for Events & Daily Wear</li>
+        <li>Bridal & Special Occasion Makeup</li>
+        <li>Kids’ Haircuts & Styling</li>
+        <li>Relaxing Facials</li>
+      </ul>
+    </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3>Hair</h3>
-        <p>Braids, wigs, natural styling & more.</p>
-      </div>
-      <div class="card">
-        <h3>Nails</h3>
-        <p>Manicure, pedicure, acrylics, designs.</p>
-      </div>
-      <div class="card">
-        <h3>Makeup</h3>
-        <p>Soft glam, bridal, editorial looks.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Booking Form -->
+    <section class="booking" id="booking">
+      <h2>Book an Appointment</h2>
+      <form action="https://formspree.io/f/xblkgzql" method="POST" aria-label="Booking form">
+        <input type="text" name="name" placeholder="Your Full Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email Address" required aria-required="true" />
+        <input type="tel" name="phone" placeholder="Phone Number" required aria-required="true" />
+        <input type="text" name="location" placeholder="Your Location" required aria-required="true" />
+        <textarea name="service" placeholder="Which services do you want?" required
+          aria-required="true"></textarea>
+        <input type="date" name="date" required aria-required="true" />
+        <p class="calendar-note">Please choose a date that suits you best.</p>
+        <button type="submit" class="book-btn">Book Now</button>
+      </form>
 
-  <section id="pricing">
-    <h2>Pricing</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3>Hair Styling</h3>
-        <p>From R400 – Braids, weave, natural styles.</p>
-      </div>
-      <div class="card">
-        <h3>Nail Services</h3>
-        <p>From R250 – Manicure, pedicure, acrylics.</p>
-      </div>
-      <div class="card">
-        <h3>Makeup</h3>
-        <p>From R350 – Day glam, bridal, special events.</p>
-      </div>
-    </div>
-  </section>
+      <a href="https://wa.me/27827602533" target="_blank" rel="noopener" class="whatsapp-button" aria-label="Book on WhatsApp">
+        Book Now on WhatsApp
+      </a>
+    </section>
 
-  <section id="booking">
-    <h2>Book Your Session</h2>
-    <form action="https://formspree.io/f/xblkgzql" method="POST" id="fuziaForm" novalidate>
-      <input type="text" name="name" required placeholder="Your Name" />
-      <input type="email" name="email" required placeholder="Your Email" />
-      <input type="text" name="service" required placeholder="Hair, Nails, Makeup..." />
-      <textarea name="message" rows="4" placeholder="Any special requests?"></textarea>
-      <button type="submit">Book Now</button>
-      <p id="thankYouMessage">Thank you! Your booking has been sent. We'll contact you soon 💖</p>
-    </form>
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials" aria-label="Client testimonials">
+      <h2>What Our Clients Say</h2>
 
-    <p style="text-align:center; margin-top: 40px; font-style: italic; color: #ff69b4; font-weight: 600;">
-      Prefer to book directly? Just send us a WhatsApp message at <a href="https://wa.me/27827602533" target="_blank" style="color:#000; text-decoration:underline;">082 760 2533</a> — we’ll reply ASAP!
-    </p>
-  </section>
+      <article class="testimonial" tabindex="0">
+        <strong>Anele M.</strong>
+        <p>“Fuzia gave me the best nails I’ve ever had — super friendly and professional!”</p>
+      </article>
 
-  <section id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-cards">
-      <div class="testimonial">
-        <p>"Fuzia came to my office and gave me the best manicure ever! So professional and friendly."</p>
-        <div class="author">— Thandi M.</div>
-      </div>
-      <div class="testimonial">
-        <p>"I love their hair styling service. They really understand Afro textures and made me feel like a queen."</p>
-        <div class="author">— Lerato K.</div>
-      </div>
-      <div class="testimonial">
-        <p>"The makeup artist was amazing! My bridal look was flawless and lasted all day."</p>
-        <div class="author">— Zinhle N.</div>
-      </div>
-    </div>
-  </section>
+      <article class="testimonial" tabindex="0">
+        <strong>Tumi S.</strong>
+        <p>The mobile makeup service was so convenient. I booked via WhatsApp and the team arrived on time!</p>
+      </article>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Fresh manicure" />
-    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Glam makeup look" />
-    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Braided hair styling" />
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Beautiful client smile" />
-  </section>
+      <article class="testimonial" tabindex="0">
+        <strong>Lindiwe N.</strong>
+        <p>Highly recommend Fuzia. Great prices and amazing quality.</p>
+      </article>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery" aria-label="Gallery of beauty styles">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80"
+          alt="Stylish nails with pink polish" />
+        <img src="https://images.unsplash.com/photo-1542838687-7a5994c09a2c?auto=format&fit=crop&w=400&q=80"
+          alt="Beautiful makeup look on a woman" />
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80"
+          alt="Hair styling with curls" />
+        <img src="https://images.unsplash.com/photo-1556228724-4ec8a81b14d8?auto=format&fit=crop&w=400&q=80"
+          alt="Manicure with detailed art" />
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Fuzia. All rights reserved. | <a href="https://instagram.com/fuzia_said" target="_blank" rel="noopener noreferrer">@fuzia_said</a></p>
+    <p>© 2025 Fuzia | WhatsApp: <a href="https://wa.me/27827602533">082 760 2533</a></p>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/27827602533" target="_blank" id="whatsapp-btn" aria-label="Chat on WhatsApp" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.92 11.92 0 0 0 12.003 0C5.374 0 0 5.373 0 12c0 2.116.555 4.09 1.613 5.81L0 24l6.386-1.585a11.945 11.945 0 0 0 5.617 1.45h.004c6.63 0 12.004-5.374 12.004-12 0-3.19-1.243-6.19-3.49-8.39zM12 21.794a9.6 9.6 0 0 1-4.965-1.418l-.355-.214-3.796.942.95-3.697-.232-.375a9.574 9.574 0 1 1 8.399 4.762zm5.203-6.575c-.287-.144-1.699-.837-1.963-.933-.263-.096-.455-.144-.647.144-.192.287-.743.933-.912 1.126-.168.192-.337.214-.625.072-.287-.143-1.213-.447-2.31-1.42-.854-.76-1.43-1.696-1.6-1.983-.168-.287-.018-.442.126-.586.13-.13.287-.337.43-.505.144-.168.192-.287.287-.478.096-.192.048-.36-.024-.505-.072-.143-.647-1.56-.885-2.13-.232-.56-.468-.484-.647-.492l-.553-.01c-.192 0-.505.072-.77.36-.263.287-1 1.004-1 2.44 0 1.434 1.026 2.82 1.17 3.02.144.192 2.022 3.084 4.9 4.32.685.296 1.218.473 1.634.605.685.22 1.308.19 1.8.115.548-.084 1.699-.693 1.94-1.364.24-.67.24-1.245.168-1.364-.072-.12-.263-.192-.55-.336z"/></svg>
-  </a>
-
-  <script>
-    const form = document.getElementById("fuziaForm");
-    const thankYouMessage = document.getElementById("thankYouMessage");
-
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          thankYouMessage.style.display = "block";
-          thankYouMessage.scrollIntoView({behavior: "smooth"});
-        } else {
-          alert("Oops! Something went wrong. Please try again.");
-        }
-      }).catch(() => {
-        alert("Oops! Something went wrong. Please check your internet connection.");
-      });
-    });
-  </script>
 </body>
+
 </html>
