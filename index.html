@@ -3,283 +3,409 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fuzia Booking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Fuzia – Glam On The Go</title>
   <style>
-    /* Reset & Fonts */
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background: #FFF8F5; /* Soft off-white */
-      color: #333333; /* Dark charcoal */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff0f5;
+      color: #333;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
+      scroll-behavior: smooth;
     }
-    h1, h2 {
-      color: #FF6F91; /* Coral pink */
-      margin-bottom: 1rem;
-      text-shadow: 0 0 6px #FF6F91aa;
-    }
-    .container {
-      max-width: 900px;
-      width: 100%;
-      background: #FFFFFF; /* pure white */
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(255,111,145,0.3);
-      margin-bottom: 3rem;
-      border: 2px solid #FF6F91;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s forwards;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input, select, textarea {
-      padding: 0.75rem 1rem;
-      border: 2px solid #FF6F91;
-      border-radius: 12px;
-      font-size: 1rem;
-      background: #FFF0F3;
-      color: #333333;
-      transition: background 0.3s ease, border-color 0.3s ease;
-      box-shadow: inset 0 0 6px #FF6F91aa;
-    }
-    input::placeholder, select::placeholder {
-      color: #FFB3C6;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      background: #FFE4EC;
-      border-color: #B693FF; /* Lavender */
-      box-shadow: 0 0 12px #B693FF;
-    }
-    button.cta-btn {
-      background: #FF6F91;
+    header {
+      background: black;
       color: white;
-      border: none;
-      padding: 1rem;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 15px #FF6F91cc;
-    }
-    button.cta-btn:hover {
-      background: #B693FF;
-      box-shadow: 0 0 25px #B693FFcc;
-    }
-    #thankYouMessage, #workerThankYou {
-      display: none;
-      margin-top: 20px;
-      color: #B693FF;
-      font-weight: 700;
-      font-size: 1.3rem;
+      padding: 20px 10px;
       text-align: center;
-      text-shadow: 0 0 8px #B693FFbb;
-      opacity: 0;
-      animation: fadeIn 0.8s forwards;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    .flex-row {
+    header h1 {
+      font-size: 2.8rem;
+      color: #ff69b4;
+      font-family: 'Arial Black', Gadget, sans-serif;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    nav {
       display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .flex-item {
-      flex: 1 1 300px;
-      background: #FFF0F3;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #FF6F91cc;
-      border: 2px solid #FF6F91;
-    }
-    h3 {
-      margin-bottom: 1rem;
-      color: #B693FF;
-      text-shadow: 0 0 6px #B693FFbb;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    label {
-      margin-bottom: 0.25rem;
-      display: block;
-      color: #FF6F91;
+      justify-content: center;
+      gap: 30px;
       font-weight: 600;
     }
-    p.description {
-      color: #FF6F91cc;
-      margin-bottom: 2rem;
-      max-width: 600px;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff69b4;
+    }
+    section {
+      padding: 60px 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
       text-align: center;
-      text-shadow: 0 0 4px #B693FFaa;
+      color: #ff69b4;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 2.2rem;
     }
-    /* Icons style */
-    svg.icon {
-      width: 24px;
-      height: 24px;
-      fill: #B693FF;
-      flex-shrink: 0;
+    #hero {
+      background: linear-gradient(135deg, #ff69b4, #000);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      font-family: 'Segoe UI Black', Arial Black, sans-serif;
     }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    #hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    #hero p {
+      font-size: 1.3rem;
+      max-width: 650px;
+      margin: auto;
+    }
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      margin-bottom: 12px;
+      color: #ff1493;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #444;
+    }
+    form {
+      background: white;
+      padding: 32px 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 12px;
+      margin-top: 14px;
+      border: 1.8px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #ff69b4;
+      box-shadow: 0 0 6px #ff69b4aa;
+    }
+    button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 20px;
+      padding: 18px 0;      
+      font-size: 1.25rem;   
+      border-radius: 14px;
+      box-shadow: 0 8px 14px rgba(255, 105, 180, 0.7);
+      transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background: #e0559f;
+      box-shadow: 0 10px 20px rgba(224, 85, 158, 0.85);
+      transform: translateY(-4px);
+    }
+    button:active {
+      background: #c9448b;
+      box-shadow: 0 5px 8px rgba(201, 68, 139, 0.9);
+      transform: translateY(1.5px);
+    }
+    #thankYouMessage {
+      display: none;
+      margin-top: 18px;
+      color: green;
+      font-weight: 600;
+      text-align: center;
+    }
+    #testimonials .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .testimonial {
+      background: white;
+      padding: 24px 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      font-style: italic;
+      color: #555;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 4rem;
+      color: #ff69b4;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-family: serif;
+      opacity: 0.3;
+    }
+    .testimonial p {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .testimonial .author {
+      font-weight: 700;
+      font-style: normal;
+      color: #ff1493;
+      text-align: right;
+    }
+    #gallery {
+      max-width: 960px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    #gallery img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    #gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 24px 10px;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ff69b4;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+    /* WhatsApp Floating Button */
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #25d366;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #whatsapp-btn:hover {
+      background-color: #1ebe5b;
+    }
+    #whatsapp-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
       }
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
+      #hero h1 {
+        font-size: 2.4rem;
       }
-    }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      .container {
-        padding: 1.5rem;
-      }
-      button.cta-btn {
-        font-size: 1rem;
+      nav {
+        gap: 15px;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Fuzia</h1>
-  <p class="description">
-    Book your appointment easily. Whether you are a client or a worker, we got you covered.
-  </p>
 
-  <div class="container" style="animation-delay: 0s;">
-    <section id="client-section">
-      <h2>
-        <!-- Client Icon -->
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        Client Booking
-      </h2>
-      <form id="bookingForm" name="booking" method="POST" data-netlify="true">
-        <label for="clientName">Full Name</label>
-        <input type="text" id="clientName" name="name" placeholder="Your full name" required />
+  <header>
+    <!-- Logo Text -->
+    <h1>Fuzia</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#booking">Booking</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+  </header>
 
-        <label for="clientEmail">Email</label>
-        <input type="email" id="clientEmail" name="email" placeholder="Your email" required />
+  <section id="hero">
+    <h1>Glam On The Go</h1>
+    <p>Mobile beauty services for queens who know their worth.<br> Hair, nails & makeup – wherever you are.</p>
+  </section>
 
-        <label for="service">Service Needed</label>
-        <select id="service" name="service" required>
-          <option value="" disabled selected>Select a service</option>
-          <option value="Hair">Hair</option>
-          <option value="Nails">Nails</option>
-          <option value="Makeup">Makeup</option>
-          <option value="Other">Other</option>
-        </select>
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="max-width: 700px; margin: auto; text-align: center;">
+      Fuzia is a mobile beauty platform made for the modern woman. Whether you're at home, at the office, or prepping for a special event,
+      our expert glam team comes to you. Afro-futuristic vibes, feminine excellence, flawless beauty.
+    </p>
+  </section>
 
-        <label for="location">Location</label>
-        <input type="text" id="location" name="location" placeholder="Where will the service take place?" required />
-
-        <label for="date">Preferred Date</label>
-        <input type="date" id="date" name="date" required />
-
-        <button class="cta-btn" type="submit">Book Now</button>
-      </form>
-      <div id="thankYouMessage">
-        Thank you for your booking! We will be in touch shortly.
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <h3>Hair</h3>
+        <p>Braids, wigs, natural styling & more.</p>
       </div>
-    </section>
-  </div>
-
-  <div class="container" style="animation-delay: 0.2s;">
-    <section id="worker-section">
-      <h2>
-        <!-- Worker Icon -->
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-        </svg>
-        Worker Registration
-      </h2>
-      <form id="workerForm" name="worker-registration" method="POST" data-netlify="true">
-        <label for="workerName">Full Name</label>
-        <input type="text" id="workerName" name="workerName" placeholder="Your full name" required />
-
-        <label for="workerEmail">Email</label>
-        <input type="email" id="workerEmail" name="workerEmail" placeholder="Your email" required />
-
-        <label for="skill">Skill</label>
-        <select id="skill" name="skill" required>
-          <option value="" disabled selected>Select your skill</option>
-          <option value="Hair">Hair</option>
-          <option value="Nails">Nails</option>
-          <option value="Makeup">Makeup</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label for="experience">Years of Experience</label>
-        <input type="number" id="experience" name="experience" placeholder="Number of years" min="0" required />
-
-        <button class="cta-btn" type="submit">Register</button>
-      </form>
-      <div id="workerThankYou">
-        Thank you for registering! We will contact you soon.
+      <div class="card">
+        <h3>Nails</h3>
+        <p>Manicure, pedicure, acrylics, designs.</p>
       </div>
-    </section>
-  </div>
+      <div class="card">
+        <h3>Makeup</h3>
+        <p>Soft glam, bridal, editorial looks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="service-cards">
+      <div class="card">
+        <h3>Hair Styling</h3>
+        <p>From R400 – Braids, weave, natural styles.</p>
+      </div>
+      <div class="card">
+        <h3>Nail Services</h3>
+        <p>From R250 – Manicure, pedicure, acrylics.</p>
+      </div>
+      <div class="card">
+        <h3>Makeup</h3>
+        <p>From R350 – Day glam, bridal, special events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2>Book Your Session</h2>
+    <form action="https://formspree.io/f/xblkgzql" method="POST" id="fuziaForm" novalidate>
+      <input type="text" name="name" required placeholder="Your Name" />
+      <input type="email" name="email" required placeholder="Your Email" />
+      <input type="text" name="service" required placeholder="Hair, Nails, Makeup..." />
+      <textarea name="message" rows="4" placeholder="Any special requests?"></textarea>
+      <button type="submit">Book Now</button>
+      <p id="thankYouMessage">Thank you! Your booking has been sent. We'll contact you soon 💖</p>
+    </form>
+
+    <p style="text-align:center; margin-top: 40px; font-style: italic; color: #ff69b4; font-weight: 600;">
+      Prefer to book directly? Just send us a WhatsApp message at <a href="https://wa.me/27827602533" target="_blank" style="color:#000; text-decoration:underline;">082 760 2533</a> — we’ll reply ASAP!
+    </p>
+  </section>
+
+  <section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial">
+        <p>"Fuzia came to my office and gave me the best manicure ever! So professional and friendly."</p>
+        <div class="author">— Thandi M.</div>
+      </div>
+      <div class="testimonial">
+        <p>"I love their hair styling service. They really understand Afro textures and made me feel like a queen."</p>
+        <div class="author">— Lerato K.</div>
+      </div>
+      <div class="testimonial">
+        <p>"The makeup artist was amazing! My bridal look was flawless and lasted all day."</p>
+        <div class="author">— Zinhle N.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Fresh manicure" />
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Glam makeup look" />
+    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Braided hair styling" />
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Beautiful client smile" />
+  </section>
+
+  <footer>
+    <p>© 2025 Fuzia. All rights reserved. | <a href="https://instagram.com/fuzia_said" target="_blank" rel="noopener noreferrer">@fuzia_said</a></p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/27827602533" target="_blank" id="whatsapp-btn" aria-label="Chat on WhatsApp" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.92 11.92 0 0 0 12.003 0C5.374 0 0 5.373 0 12c0 2.116.555 4.09 1.613 5.81L0 24l6.386-1.585a11.945 11.945 0 0 0 5.617 1.45h.004c6.63 0 12.004-5.374 12.004-12 0-3.19-1.243-6.19-3.49-8.39zM12 21.794a9.6 9.6 0 0 1-4.965-1.418l-.355-.214-3.796.942.95-3.697-.232-.375a9.574 9.574 0 1 1 8.399 4.762zm5.203-6.575c-.287-.144-1.699-.837-1.963-.933-.263-.096-.455-.144-.647.144-.192.287-.743.933-.912 1.126-.168.192-.337.214-.625.072-.287-.143-1.213-.447-2.31-1.42-.854-.76-1.43-1.696-1.6-1.983-.168-.287-.018-.442.126-.586.13-.13.287-.337.43-.505.144-.168.192-.287.287-.478.096-.192.048-.36-.024-.505-.072-.143-.647-1.56-.885-2.13-.232-.56-.468-.484-.647-.492l-.553-.01c-.192 0-.505.072-.77.36-.263.287-1 1.004-1 2.44 0 1.434 1.026 2.82 1.17 3.02.144.192 2.022 3.084 4.9 4.32.685.296 1.218.473 1.634.605.685.22 1.308.19 1.8.115.548-.084 1.699-.693 1.94-1.364.24-.67.24-1.245.168-1.364-.072-.12-.263-.192-.55-.336z"/></svg>
+  </a>
 
   <script>
-    const bookingForm = document.getElementById('bookingForm');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const workerForm = document.getElementById('workerForm');
-    const workerThankYou = document.getElementById('workerThankYou');
+    const form = document.getElementById("fuziaForm");
+    const thankYouMessage = document.getElementById("thankYouMessage");
 
-    // Booking form submit handler
-    bookingForm.addEventListener('submit', function(event) {
+    form.addEventListener("submit", function(event) {
       event.preventDefault();
 
-      const formData = new FormData(bookingForm);
+      const formData = new FormData(form);
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        bookingForm.style.display = 'none';
-        thankYouMessage.style.display = 'block';
-      })
-      .catch(() => alert('Oops! Something went wrong. Please try again.'));
-    });
-
-    // Worker form submit handler
-    workerForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(workerForm);
-
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        workerForm.style.display = 'none';
-        workerThankYou.style.display = 'block';
-      })
-      .catch(() => alert('Oops! Something went wrong. Please try again.'));
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          thankYouMessage.style.display = "block";
+          thankYouMessage.scrollIntoView({behavior: "smooth"});
+        } else {
+          alert("Oops! Something went wrong. Please try again.");
+        }
+      }).catch(() => {
+        alert("Oops! Something went wrong. Please check your internet connection.");
+      });
     });
   </script>
 </body>
