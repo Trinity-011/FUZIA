@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Dashboard - Fuzia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfdfd;
+      color: #333;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f0f0f0;
+      gap: 10px;
+      padding: 1rem;
+    }
+    nav button {
+      background: #ff69b4;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover {
+      background: #e0559e;
+    }
+    section {
+      display: none;
+      padding: 2rem;
+      animation: fade 0.3s ease-in-out;
+    }
+    section.active {
+      display: block;
+    }
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .status-buttons button {
+      background: #ddd;
+      color: #333;
+      margin-right: 10px;
+    }
+    .status-buttons button.active {
+      background: #ff69b4;
+      color: #fff;
+    }
+    .booking-list {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to Your Fuzia Dashboard</h1>
+  </header>
+
+  <nav>
+    <button onclick="showSection('profile')">Profile</button>
+    <button onclick="showSection('booking')">Book Now</button>
+    <button onclick="showSection('status')">Booking Status</button>
+    <button onclick="showSection('logout')">Logout</button>
+  </nav>
+
+  <section id="profile">
+    <h2>Your Profile</h2>
+    <p>Welcome back! Here you can manage your account and view your preferences.</p>
+  </section>
+
+  <section id="booking">
+    <h2>Book a Service</h2>
+    <p>Coming soon: choose your specialist and schedule your beauty appointment.</p>
+  </section>
+
+  <section id="status">
+    <h2>Booking Status</h2>
+    <div class="status-buttons">
+      <button onclick="showStatus('approved')" class="active">Approved</button>
+      <button onclick="showStatus('pending')">Pending</button>
+      <button onclick="showStatus('rejected')">Rejected</button>
+    </div>
+    <div id="approved" class="booking-list">
+      <p>You have no approved bookings yet.</p>
+    </div>
+    <div id="pending" class="booking-list" style="display:none;">
+      <p>Your pending booking requests will appear here.</p>
+    </div>
+    <div id="rejected" class="booking-list" style="display:none;">
+      <p>Rejected bookings will be listed here.</p>
+    </div>
+  </section>
+
+  <section id="logout">
+    <h2>Logout</h2>
+    <p>You will be signed out of your account.</p>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showStatus(type) {
+      ['approved', 'pending', 'rejected'].forEach(status => {
+        document.getElementById(status).style.display = 'none';
+        document.querySelector(`.status-buttons button[onclick="showStatus('${status}')"]`).classList.remove('active');
+      });
+      document.getElementById(type).style.display = 'block';
+      document.querySelector(`.status-buttons button[onclick="showStatus('${type}')"]`).classList.add('active');
+    }
+
+    // Load default section
+    showSection('profile');
+  </script>
+</body>
+
+</html>
