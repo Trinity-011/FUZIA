@@ -1,180 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Join Fuzia – Beauty Specialist Application</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <title>Fuzia | Choose Your Specialist</title>
   <style>
-    .hidden {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 2rem;
+    }
+    .specialist-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .specialist-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .specialist-card:hover {
+      transform: scale(1.05);
+      border-color: #e91e63;
+    }
+    .specialist-card.selected {
+      border-color: #e91e63;
+      background-color: #ffe6f0;
+    }
+    .specialist-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #e91e63;
+    }
+    .specialist-services {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+    form {
+      max-width: 400px;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    input[type="hidden"] {
+      display: none;
+    }
+    button {
+      background-color: #e91e63;
+      border: none;
+      padding: 12px 25px;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #c2185b;
+    }
+    .no-selection {
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
       display: none;
     }
   </style>
 </head>
+<body>
 
-<body class="bg-pink-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-pink-600 text-white p-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">Fuzia</h1>
-    <a href="index.html" class="underline hover:text-gray-200">← Back to Home</a>
-  </header>
+  <h1>Choose Your Specialist</h1>
 
-  <!-- Hero -->
-  <section class="text-center py-16 px-6">
-    <h2 class="text-4xl font-bold text-pink-700 mb-4">Join the Fuzia Team</h2>
-    <p class="max-w-2xl mx-auto text-lg">
-      Are you a talented hairstylist, makeup artist, or nail technician? Apply now to become part of our mobile beauty
-      specialist network across Johannesburg.
-    </p>
-  </section>
+  <div class="specialist-list" id="specialistList">
+    <!-- Specialist cards will be injected here -->
+  </div>
 
-  <!-- Benefits -->
-  <section class="py-10 px-6 bg-white max-w-4xl mx-auto rounded shadow mb-10">
-    <h3 class="text-3xl font-semibold text-pink-700 mb-6 text-center">Why Join Fuzia?</h3>
-    <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
-      <li>Flexible hours tailored to your lifestyle.</li>
-      <li>Competitive pay and regular client bookings.</li>
-      <li>Work remotely and build your personal brand.</li>
-      <li>Be part of a growing and trusted beauty platform.</li>
-    </ul>
-  </section>
-
-  <!-- Multi-step Form -->
-  <section class="py-12 px-6 bg-white max-w-xl mx-auto rounded shadow">
-    <h3 class="text-2xl font-bold mb-6 text-pink-700 text-center">Apply Now</h3>
-
-    <form id="applicationForm" action="https://formspree.io/f/xblkgzql" method="POST" enctype="multipart/form-data" class="space-y-6">
-      <!-- Step 1 -->
-      <div id="step1">
-        <input type="text" name="name" placeholder="Full Name" required class="w-full border p-3 rounded" />
-        <input type="email" name="email" placeholder="Email" required class="w-full border p-3 rounded mt-4" />
-        <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border p-3 rounded mt-4" />
-        <textarea name="experience" placeholder="Tell us about your experience and services" required
-          class="w-full border p-3 rounded mt-4"></textarea>
-        <input type="url" name="portfolio" placeholder="Link to your work (Instagram, Google Drive, etc)"
-          class="w-full border p-3 rounded mt-4" />
-        <label class="block mt-4">
-          Upload portfolio images (optional):
-          <input type="file" name="portfolio_files" accept="image/*" multiple class="mt-2" />
-        </label>
-
-        <div class="mt-6 flex justify-between">
-          <button type="button" id="nextBtn"
-            class="bg-pink-600 text-white px-6 py-3 rounded font-semibold hover:bg-pink-700 transition">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div id="step2" class="hidden">
-        <div class="mb-4 text-left">
-          <h4 class="font-semibold mb-2">Terms & Conditions</h4>
-          <p class="text-sm text-gray-700 mb-2">
-            By submitting this application, you agree to uphold professional conduct, maintain client confidentiality,
-            and follow Fuzia's policies.
-          </p>
-          <label class="inline-flex items-center">
-            <input type="checkbox" name="terms" required class="mr-2" />
-            I agree to the Terms & Conditions
-          </label>
-        </div>
-
-        <div class="flex justify-between">
-          <button type="button" id="prevBtn"
-            class="bg-gray-400 text-white px-6 py-3 rounded font-semibold hover:bg-gray-500 transition">Back</button>
-          <button type="submit"
-            class="bg-pink-600 text-white px-6 py-3 rounded font-semibold hover:bg-pink-700 transition">Submit
-            Application</button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Thank You Message -->
-    <div id="thankYouMsg" class="hidden mt-8 text-center text-green-700 font-semibold text-lg">
-      Thank you for applying! We will review your application and get back to you soon.
-    </div>
-  </section>
-
-  <!-- FAQs -->
-  <section class="py-12 px-6 max-w-4xl mx-auto rounded shadow bg-white mt-10 mb-10">
-    <h3 class="text-3xl font-semibold text-pink-700 mb-6 text-center">Frequently Asked Questions</h3>
-    <div class="space-y-4 text-gray-700">
-      <details class="border rounded p-4">
-        <summary class="cursor-pointer font-semibold">What qualifications do I need?</summary>
-        <p class="mt-2">We look for experienced beauty professionals with a passion for mobile service excellence.</p>
-      </details>
-      <details class="border rounded p-4">
-        <summary class="cursor-pointer font-semibold">How do I get paid?</summary>
-        <p class="mt-2">Payments are processed monthly via bank transfer or other preferred methods.</p>
-      </details>
-      <details class="border rounded p-4">
-        <summary class="cursor-pointer font-semibold">Can I set my own schedule?</summary>
-        <p class="mt-2">Yes! You have full control over your availability and bookings.</p>
-      </details>
-      <details class="border rounded p-4">
-        <summary class="cursor-pointer font-semibold">Do I need to provide my own supplies?</summary>
-        <p class="mt-2">Yes, specialists provide their own professional tools and products.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="py-12 px-6 max-w-4xl mx-auto rounded shadow bg-white mb-10">
-    <h3 class="text-3xl font-semibold text-pink-700 mb-6 text-center">What Our Specialists Say</h3>
-    <div class="space-y-6 text-gray-700">
-      <blockquote class="border-l-4 border-pink-600 pl-4 italic">“Joining Fuzia gave me freedom to work on my terms and grow my clientele fast!” – <strong>Sibongile</strong></blockquote>
-      <blockquote class="border-l-4 border-pink-600 pl-4 italic">“The support from the Fuzia team is amazing. I feel like part of a family.” – <strong>Anele</strong></blockquote>
-      <blockquote class="border-l-4 border-pink-600 pl-4 italic">“I love the flexibility and regular bookings through Fuzia’s platform.” – <strong>Lindiwe</strong></blockquote>
-    </div>
-  </section>
-
-  <!-- Social Media Links -->
-  <section class="py-12 px-6 max-w-4xl mx-auto rounded shadow bg-white mb-10 text-center">
-    <h3 class="text-3xl font-semibold text-pink-700 mb-6">Connect with Us</h3>
-    <p class="mb-6">Join our community or reach out directly on social media:</p>
-    <div class="space-x-6">
-      <a href="https://instagram.com/fuzia_said" target="_blank" rel="noopener" class="text-pink-600 font-semibold hover:underline">Instagram</a>
-      <a href="https://wa.me/27827602533" target="_blank" rel="noopener" class="text-pink-600 font-semibold hover:underline">WhatsApp</a>
-      <a href="https://facebook.com/fuzia" target="_blank" rel="noopener" class="text-pink-600 font-semibold hover:underline">Facebook</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-pink-600 text-white text-center p-4 mt-10">
-    <p>&copy; 2025 Fuzia. All rights reserved.</p>
-    <a href="index.html" class="block text-sm underline mt-2">Back to Homepage</a>
-  </footer>
+  <form id="specialistForm" action="https://formspree.io/f/xblkgzql" method="POST">
+    <input type="hidden" name="specialist" id="selectedSpecialist" />
+    <button type="submit">Confirm Specialist</button>
+    <div class="no-selection" id="noSelectionMsg">Please select a specialist before submitting.</div>
+  </form>
 
   <script>
-    const form = document.getElementById('applicationForm');
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const thankYouMsg = document.getElementById('thankYouMsg');
+    const specialists = [
+      { name: "Zinhle M.", services: "Hair Styling, Braiding" },
+      { name: "Lindiwe K.", services: "Makeup, Lashes" },
+      { name: "Thabo S.", services: "Nails, Manicure, Pedicure" },
+      { name: "Nomsa D.", services: "Hair Styling, Makeup" }
+    ];
 
-    nextBtn.addEventListener('click', () => {
-      if (form.checkValidity()) {
-        step1.classList.add('hidden');
-        step2.classList.remove('hidden');
-      } else {
-        form.reportValidity();
+    const specialistList = document.getElementById('specialistList');
+    const selectedInput = document.getElementById('selectedSpecialist');
+    const noSelectionMsg = document.getElementById('noSelectionMsg');
+    const form = document.getElementById('specialistForm');
+
+    let selectedCard = null;
+
+    // Create specialist cards without photos
+    specialists.forEach(spec => {
+      const card = document.createElement('div');
+      card.classList.add('specialist-card');
+
+      card.innerHTML = `
+        <div class="specialist-name">${spec.name}</div>
+        <div class="specialist-services">${spec.services}</div>
+      `;
+
+      card.addEventListener('click', () => {
+        if (selectedCard) {
+          selectedCard.classList.remove('selected');
+        }
+        card.classList.add('selected');
+        selectedCard = card;
+        selectedInput.value = spec.name;
+        noSelectionMsg.style.display = 'none';
+      });
+
+      specialistList.appendChild(card);
+    });
+
+    // Validate before submit
+    form.addEventListener('submit', e => {
+      if (!selectedInput.value) {
+        e.preventDefault();
+        noSelectionMsg.style.display = 'block';
       }
     });
-
-    prevBtn.addEventListener('click', () => {
-      step2.classList.add('hidden');
-      step1.classList.remove('hidden');
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Simulate submission for demo purposes
-      // You can remove below lines to actually submit to Formspree or use AJAX for real submission
-      form.style.display = 'none';
-      thankYouMsg.classList.remove('hidden');
-    });
   </script>
-</body>
 
-</html>
+</body>
+</

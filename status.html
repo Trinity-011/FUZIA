@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fuzia | Booking Status</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf2f8;
+      color: #333;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #e91e63;
+    }
+    .status-box {
+      background: white;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #e91e63;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d81b60;
+    }
+    .result {
+      margin-top: 20px;
+      background: #fce4ec;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Check Booking Status</h1>
+
+  <div class="status-box">
+    <label for="name">Enter Your Full Name:</label>
+    <input type="text" id="name" placeholder="e.g. Trinity Mashele" required />
+
+    <button onclick="checkStatus()">Check Status</button>
+
+    <div class="result" id="statusResult">
+      <strong>Status:</strong> <span id="statusText">Pending</span>
+    </div>
+  </div>
+
+  <script>
+    function checkStatus() {
+      const name = document.getElementById("name").value.trim().toLowerCase();
+      const resultBox = document.getElementById("statusResult");
+      const statusText = document.getElementById("statusText");
+
+      // Dummy data – you can replace this later with a database/API
+      const bookings = {
+        "trinity mashele": "Accepted",
+        "thando ndlovu": "Pending",
+        "zama khumalo": "Completed"
+      };
+
+      if (bookings[name]) {
+        statusText.innerText = bookings[name];
+      } else {
+        statusText.innerText = "Not Found. Please contact support.";
+      }
+
+      resultBox.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
