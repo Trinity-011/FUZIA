@@ -3,88 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up - Fuzia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Fuzia | Client Sign-Up</title>
   <style>
+    :root {
+      --main-color: #ff007f;
+      --background: #f9f9f9;
+      --text: #333;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #fff0f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
+      background: var(--background);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-    .signup-container {
-      background: #ffffff;
+
+    .signup-box {
+      background: white;
       padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       max-width: 400px;
+      width: 90%;
     }
+
     h2 {
       text-align: center;
-      color: #e91e63;
-      margin-bottom: 30px;
-    }
-    input, select {
-      width: 100%;
-      padding: 12px;
+      color: var(--main-color);
       margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
     }
-    button {
-      width: 100%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
       padding: 12px;
-      background: #e91e63;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px;
+      background: var(--main-color);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
+
     button:hover {
-      background: #d81b60;
+      background: #e6006b;
+    }
+
+    .login-link {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .login-link a {
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    .back-home {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .back-home a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="signup-container">
+  <div class="signup-box">
     <h2>Create Your Fuzia Account</h2>
-    <form id="signupForm">
+    <form onsubmit="return validateForm()" action="client-dashboard.html">
       <input type="text" id="name" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
       <input type="password" id="password" placeholder="Password" required />
-      <select id="role" required>
-        <option value="">Select Role</option>
-        <option value="user">Client / User</option>
-        <option value="specialist">Beauty Specialist</option>
-      </select>
       <button type="submit">Sign Up</button>
     </form>
+    <div class="login-link">
+      Already have an account? <a href="#">Log in</a>
+    </div>
+    <div class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </div>
   </div>
 
   <script>
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const role = document.getElementById('role').value;
-
-      localStorage.setItem('fuzia_user', JSON.stringify({ name, email, role }));
-
-      if (role === 'specialist') {
-        window.location.href = 'dashboard-specialist.html';
-      } else {
-        window.location.href = 'booking-status.html';
+      if (!name || !email || !phone || !password) {
+        alert("Please fill out all fields.");
+        return false;
       }
-    });
+
+      // Simulated success (in real app, this would send data to a server)
+      alert("Sign-up successful! Redirecting...");
+      return true;
+    }
   </script>
 
 </body>
