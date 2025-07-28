@@ -1,94 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fuzia | Book a Service</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Book a Salon Appointment | Fuzia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff0f5;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fffafa;
       color: #333;
-      padding: 2rem;
     }
-    h1 {
-      color: #e91e63;
+
+    header {
+      background: #000;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
-    form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .container {
       max-width: 500px;
-      margin: 2rem auto;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: auto;
+      padding: 20px;
     }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #ff4f8b;
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
     input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
+      padding: 12px;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 15px;
     }
+
     button {
-      margin-top: 20px;
-      background: #e91e63;
+      padding: 15px;
+      background: #ff4f8b;
       color: white;
-      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
-      font-weight: bold;
+      border-radius: 10px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
+
     button:hover {
-      background: #d81b60;
+      background: #e04379;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .back-link a {
+      color: #ff4f8b;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      .container {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Book Your Service</h1>
+  <header>
+    <h1>Fuzia Salon Booking</h1>
+  </header>
 
-  <form action="https://formspree.io/f/xblkgzql" method="POST">
-    <label for="name">Full Name:</label>
-    <input type="text" name="name" id="name" required>
+  <div class="container">
+    <h2>Book Your Salon Appointment</h2>
+    <form action="mailto:officialfuzia@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="Full Name" placeholder="Your Full Name" required />
+      <input type="tel" name="Phone Number" placeholder="Phone Number" required />
+      <select name="Service" required>
+        <option value="" disabled selected>Select Service</option>
+        <option>Hair Styling</option>
+        <option>Nails</option>
+        <option>Makeup</option>
+        <option>Combo (Hair + Nails + Makeup)</option>
+      </select>
+      <input type="date" name="Date" required />
+      <input type="time" name="Time" required />
+      <textarea name="Preferred Salon" rows="3" placeholder="Preferred Salon (if known)"></textarea>
+      <button type="submit">Confirm Booking</button>
+    </form>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" name="phone" id="phone" required>
+    <div class="back-link">
+      <p><a href="index.html">← Back to Home</a></p>
+    </div>
+  </div>
 
-    <label for="email">Email Address:</label>
-    <input type="email" name="email" id="email" required>
-
-    <label for="service">Select Service:</label>
-    <select name="service" id="service" required>
-      <option value="">--Choose a service--</option>
-      <option value="Hair Styling">Hair Styling</option>
-      <option value="Braiding">Braiding</option>
-      <option value="Makeup">Makeup</option>
-      <option value="Nails">Nails</option>
-      <option value="Lashes">Lashes</option>
-    </select>
-
-    <label for="location">Location:</label>
-    <input type="text" name="location" id="location" required>
-
-    <label for="date">Preferred Date:</label>
-    <input type="date" name="date" id="date" required>
-
-    <label for="time">Preferred Time:</label>
-    <input type="time" name="time" id="time" required>
-
-    <label for="notes">Additional Notes (optional):</label>
-    <textarea name="notes" id="notes" rows="4"></textarea>
-
-    <button type="submit">Confirm Booking</button>
-  </form>
+  <footer>
+    &copy; 2025 Fuzia. All rights reserved.
+  </footer>
 
 </body>
 </html>
