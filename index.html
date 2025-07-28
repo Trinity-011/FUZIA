@@ -3,219 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fuzia | Beauty On-Demand</title>
+  <title>Fuzia | Book Your Beauty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --main-color: #ff007f;
-      --secondary-color: #222;
-      --background: #f5f5f5;
-      --text-color: #444;
+    * {
+      box-sizing: border-box;
     }
 
     body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
+      padding: 0;
+      background: #fffafa;
+      color: #333;
     }
 
     header {
-      background-color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
     header h1 {
       margin: 0;
-      color: var(--main-color);
-      font-size: 1.8rem;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to right, #ffe6f0, #e6f0ff);
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--secondary-color);
-    }
-
-    .hero p {
-      max-width: 600px;
-      font-size: 1.1rem;
-    }
-
-    .hero button {
-      margin-top: 30px;
-      padding: 12px 30px;
-      font-size: 1rem;
-      background-color: var(--main-color);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
       font-size: 2rem;
-      margin-bottom: 40px;
-      color: var(--secondary-color);
+      letter-spacing: 1px;
     }
 
-    .about, .services, .how-it-works, .testimonials {
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .about-fuzia {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
       text-align: center;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
+    .about-fuzia h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
     }
 
-    .services-grid div {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .about-fuzia p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
     }
 
-    .how-it-works ol {
-      max-width: 600px;
-      margin: auto;
-      text-align: left;
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
-    .testimonial {
-      background-color: white;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      font-style: italic;
+    .options a {
+      background: #ff4f8b;
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .options a:hover {
+      background: #e04379;
     }
 
     .contact {
       text-align: center;
+      margin-top: 40px;
+      font-size: 15px;
+      color: #555;
     }
 
-    .cta-buttons {
-      margin-top: 20px;
-    }
-
-    .cta-buttons a {
-      margin: 10px;
-      padding: 12px 20px;
-      background: var(--main-color);
-      color: white;
+    .contact a {
+      color: #ff4f8b;
       text-decoration: none;
-      border-radius: 6px;
+    }
+
+    .socials {
+      margin-top: 10px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #fff;
-      color: #888;
-      font-size: 0.9rem;
+      font-size: 14px;
+      color: #999;
     }
 
-    @media screen and (max-width: 600px) {
-      .hero h2 {
-        font-size: 2rem;
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
       }
 
-      nav {
-        display: none;
+      .options {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .options a {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Fuzia</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#how">How It Works</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <header>
+    <h1>Fuzia</h1>
+  </header>
 
-<section class="hero">
-  <h2>Beauty Delivered to You</h2>
-  <p>Book trusted hair, makeup, and nail specialists at your convenience—anytime, anywhere. Fuzia connects you to top beauty talent in your area.</p>
-  <button onclick="window.location.href='client-signup.html'">Get Started</button>
-</section>
+  <div class="container">
+    <div class="intro">
+      <h2>Choose How You Want To Get Serviced</h2>
+      <p>At the salon or delivered to your doorstep.</p>
+    </div>
 
-<section class="about" id="about">
-  <h3 class="section-title">About Fuzia</h3>
-  <p>Fuzia is a mobile beauty platform that brings professional beauty services directly to your doorstep. Whether you're prepping for a big event or just need some self-care, we’ve got you covered.</p>
-</section>
+    <div class="about-fuzia">
+      <h3>About Fuzia</h3>
+      <p>
+        Fuzia is a modern beauty service built for your lifestyle. Whether you need to glam up at home or prefer visiting a salon, Fuzia connects you with trusted professionals for hair, nails, and makeup. We're mobile, professional, and ready when you are.
+      </p>
+    </div>
 
-<section class="services" id="services">
-  <h3 class="section-title">Our Services</h3>
-  <div class="services-grid">
-    <div><strong>Hair Styling</strong><br>Protective styles, braiding, trimming & more</div>
-    <div><strong>Makeup</strong><br>Glam, natural, editorial, or bridal makeup</div>
-    <div><strong>Nails</strong><br>Manicures, pedicures, acrylics & designs</div>
-    <div><strong>Grooming</strong><br>Unisex grooming and personal care</div>
+    <div class="options">
+      <a href="salon-booking.html">Book Salon Appointment</a>
+      <a href="home-booking.html">Book Home Visit</a>
+    </div>
+
+    <!-- 🔧 You can add salon names, logos, or map below once you partner with physical salons -->
+    <!-- Example:
+    <section class="salons">
+      <h3>Partner Salons</h3>
+      <div>
+        <p>👑 Glam Zone — Sandton</p>
+        <p>📍 Location: 123 Mandela St.</p>
+      </div>
+    </section>
+    -->
+
+    <div class="contact">
+      <p>📧 Email us: <a href="mailto:officialfuzia@gmail.com">officialfuzia@gmail.com</a></p>
+      <p>📱 WhatsApp: <a href="https://wa.me/27813963760">081 396 3760</a></p>
+      <div class="socials">
+        📸 Instagram: <a href="https://instagram.com/fuzi_asa" target="_blank">@fuzi_asa</a>
+      </div>
+    </div>
   </div>
-</section>
 
-<section class="how-it-works" id="how">
-  <h3 class="section-title">How It Works</h3>
-  <ol>
-    <li>1. Create your free account</li>
-    <li>2. Choose a service and time</li>
-    <li>3. Get matched with a certified specialist</li>
-    <li>4. Relax as beauty comes to you</li>
-  </ol>
-</section>
-
-<section class="testimonials" id="testimonials">
-  <h3 class="section-title">What Our Users Say</h3>
-  <div class="testimonial">“I booked a stylist same-day and she arrived right on time! This service is a lifesaver.” – Nomsa T.</div>
-  <div class="testimonial">“I love how easy it is to find someone who knows how to do black hair right.” – Thabo M.</div>
-</section>
-
-<section class="contact" id="contact">
-  <h3 class="section-title">Get in Touch</h3>
-  <p>Questions? Reach us on WhatsApp at <strong>082 760 2533</strong> or follow us on Instagram <strong>@fuzia_said</strong>.</p>
-  <div class="cta-buttons">
-    <a href="client-signup.html">Client Sign Up</a>
-    <a href="specialist-signup.html">Become a Specialist</a>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 Fuzia. All rights reserved.
-</footer>
+  <footer>
+    © 2025 Fuzia. All rights reserved.
+  </footer>
 
 </body>
 </html>
